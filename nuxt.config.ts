@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import svgLoader from 'vite-svg-loader'
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -6,6 +8,9 @@ export default defineNuxtConfig({
     }
   },
   vite: {
+    plugins: [
+      svgLoader({})
+    ],
     define: {
       __VUE_I18N_FULL_INSTALL__: true,
       __VUE_I18N_LEGACY_API__: false,
@@ -22,12 +27,14 @@ export default defineNuxtConfig({
     }
   },
   modules: [
+    '@vueuse/motion/nuxt',
     ['@nuxtjs/google-fonts',
       {
         families: {
           'Noto+Sans': [300, 400, 500, 600]
         }
       }
-    ]
+    ],
+    'nuxt-lodash'
   ]
 })
